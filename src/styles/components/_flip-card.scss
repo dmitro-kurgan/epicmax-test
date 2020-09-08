@@ -1,0 +1,45 @@
+@import "./src/styles/utils/mixins.scss";
+
+.flip-card {
+  @include size(150px);
+
+  background-color: transparent;
+  perspective: 1000px;
+
+  &__inner {
+    position: relative;
+
+    @include size(100%);
+
+    text-align: center;
+    transform-style: preserve-3d;
+    transition: transform $transition-duration-base;
+  }
+
+  &:hover {
+    .flip-card__inner {
+      transform: rotateY(180deg);
+    }
+  }
+
+  &__front, &__back {
+    position: absolute;
+
+    @include size(100%);
+
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+
+  &__back {
+    transform: rotateY(180deg);
+  }
+
+  &__photo {
+    display: block;
+
+    @include size(100%);
+
+    object-fit: cover;
+  }
+}
