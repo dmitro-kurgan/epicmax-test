@@ -1,5 +1,5 @@
 <template>
-  <div itemscope itemtype="schema.org/MusicGroup">
+  <div itemscope itemtype="https://schema.org/MusicGroup">
     <h1 itemprop="name">Guns n' Roses</h1>
     <ul id="list" class="list">
       <li
@@ -7,11 +7,11 @@
         v-bind:key="index"
         class="list__item"
         itemscope
-        itemtype="schema.org/Person"
+        itemtype="https://schema.org/Person"
       >
         <span class="list__item-num">0{{ index + 1 }}</span>
         <h2 class="list__item-name" itemprop="name">{{ member.name }}</h2>
-        <p class="list__item-post" itemprop="jobTitle">
+        <p class="list__item-post" itemprop="jobTitle" :title="member.post">
           /&nbsp;{{ member.post }}
         </p>
         <div class="flip-card">
@@ -128,6 +128,10 @@ export default {
     }
 
     &-post {
+      max-width: 210px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
       opacity: 0;
       transition: $transition-duration-base opacity,
         $transition-duration-base padding-left;

@@ -1,12 +1,12 @@
 <template>
-  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <header class="header" itemscope itemtype="https://schema.org/WPHeader">
     <a href="./" class="logo" itemprop="url" title="State Supply">
       <img src="../assets/logo.svg" alt="State Supply" itemprop="image" />
     </a>
     <div
       class="header__main"
       itemscope
-      itemtype="http://schema.org/Organization"
+      itemtype="https://schema.org/Organization"
     >
       <div class="header__top">
         <div class="info" itemtype="https://schema.org/Event">
@@ -22,7 +22,7 @@
           >
           <span class="info__event">
             Today we close in <span>3 hours&nbsp;</span>at&nbsp;<span
-              itemprop="startDate"
+              itemprop="endDate"
               content="2020-09-7T17:00"
               >5 p.m.</span
             >
@@ -76,11 +76,14 @@
           <ul id="menu" class="nav">
             <template v-for="(nav, index) in nav">
               <li
-                class="nav__item"
+                v-if="nav.mod"
                 v-bind:key="index"
-                v-bind:class="`nav__item--${nav.mod}`"
+                v-bind:class="`nav__item nav__item--${nav.mod}`"
               >
-                <a href="#" class="nav__link">{{ nav.name }} </a>
+                <a href="#" class="nav__link">{{ nav.name }}</a>
+              </li>
+              <li v-else class="nav__item" v-bind:key="index">
+                <a href="#" class="nav__link">{{ nav.name }}</a>
               </li>
             </template>
           </ul>
